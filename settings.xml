@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+
+	<localRepository>${user.home}/.m2/repository</localRepository>
+
+	<pluginGroups>
+		<pluginGroup>org.mortbay.jetty</pluginGroup>
+		<pluginGroup>com.atlassian.maven.plugins</pluginGroup>
+	</pluginGroups>
+
+	<mirrors>
+		<mirror>
+			<id>centralmirror</id>
+			<name>Apache maven central mirror Spain</name>
+			<url>http://downloads.centralmirror.com/public/maven</url>
+			<mirrorOf>maven_central</mirrorOf>
+		</mirror>
+	</mirrors>
+
+	<profiles>
+		<profile>
+			<id>test</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+				<jdk>1.8</jdk>
+			</activation>
+
+			<repositories>
+				<repository>
+					<id>codehausSnapshots</id>
+					<name>Codehaus Snapshots</name>
+					<releases>
+						<enabled>false</enabled>
+						<updatePolicy>always</updatePolicy>
+						<checksumPolicy>warn</checksumPolicy>
+					</releases>
+					<url>http://snapshots.maven.codehaus.org/maven2</url>
+					<layout>default</layout>
+				</repository>
+			</repositories>
+		</profile>
+	</profiles>
+
+	<activeProfiles>
+		<activeProfile>test</activeProfile>
+	</activeProfiles>
+</settings>
